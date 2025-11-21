@@ -1,0 +1,63 @@
+/* ====================================
+   ESTILOS DEL COMPONENTE DE PAGINACIÓN
+   ==================================== */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.pagination-btn,
+.pagination-number {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--border);
+  background: white;
+  color: var(--text-primary);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-btn:hover:not(:disabled),
+.pagination-number:hover:not(.active) {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--light);
+}
+
+.pagination-number.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  cursor: default;
+}
+
+.pagination-ellipsis {
+  padding: 0.5rem;
+  color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pagination {
+    gap: 0.25rem;
+  }
+
+  .pagination-btn,
+  .pagination-number {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}

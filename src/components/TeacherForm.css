@@ -1,0 +1,62 @@
+/* ====================================
+   ESTILOS DEL FORMULARIO DE PROFESORES
+   ==================================== */
+
+/* Reutiliza los mismos estilos que StudentForm */
+.teacher-form {
+  padding: 24px;
+}
+
+.teacher-form .form-section {
+  margin-bottom: 24px;
+}
+
+.teacher-form .form-section h3 {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--light);
+}
+
+.teacher-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.teacher-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.teacher-form .form-group label {
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.teacher-form .form-group input,
+.teacher-form .form-group select {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.teacher-form .form-group input:focus,
+.teacher-form .form-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+@media (max-width: 768px) {
+  .teacher-form .form-row {
+    grid-template-columns: 1fr;
+  }
+}

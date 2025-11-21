@@ -1,0 +1,230 @@
+/* ====================================
+   ESTILOS DE LA VISTA DE CALENDARIO SEMANAL
+   ==================================== */
+
+.weekly-schedule-view {
+  padding: 24px;
+}
+
+/* Header */
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--border);
+}
+
+.schedule-header h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+/* Grid del calendario */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+  min-height: 500px;
+}
+
+/* Columna de cada día */
+.day-column {
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header del día */
+.day-header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: white;
+  padding: 16px;
+  text-align: center;
+}
+
+.day-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+}
+
+.day-count {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+/* Lista de horarios del día */
+.day-schedules {
+  flex: 1;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+/* Bloque de horario individual */
+.schedule-block {
+  background: var(--light);
+  border-radius: 8px;
+  padding: 12px;
+  border-left: 4px solid var(--primary);
+  transition: all 0.3s;
+  position: relative;
+}
+
+.schedule-block:hover {
+  background: white;
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.schedule-time {
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.schedule-course {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  font-size: 1rem;
+}
+
+.schedule-teacher {
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.schedule-classroom {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+/* Acciones del horario */
+.schedule-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.schedule-actions button {
+  flex: 1;
+  padding: 6px;
+  font-size: 0.9rem;
+}
+
+/* Sin horarios */
+.no-schedules {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.no-schedules p {
+  color: var(--text-secondary);
+  font-style: italic;
+  text-align: center;
+}
+
+/* Estado vacío */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.empty-icon {
+  font-size: 5rem;
+  margin-bottom: 20px;
+}
+
+.empty-state h3 {
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+/* Loading state */
+.loading-state {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.loading-state .spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--light);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+  .calendar-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .calendar-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .weekly-schedule-view {
+    padding: 16px;
+  }
+
+  .schedule-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .schedule-header button {
+    width: 100%;
+  }
+
+  .calendar-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .day-schedules {
+    max-height: 400px;
+  }
+}

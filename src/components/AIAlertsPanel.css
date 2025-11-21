@@ -1,0 +1,195 @@
+/* ====================================
+   ESTILOS PANEL DE ALERTAS IA
+   ==================================== */
+
+.ai-alerts-panel {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Header del panel */
+.panel-header {
+  padding: 20px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.panel-title h3 {
+  color: white;
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.alerts-count {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.toggle-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Contenido */
+.panel-content {
+  background: white;
+  border-radius: 0 0 12px 12px;
+  padding: 20px;
+}
+
+/* Loading */
+.panel-loading {
+  text-align: center;
+  padding: 40px;
+  color: white;
+}
+
+.panel-loading .spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px;
+}
+
+/* Sin alertas */
+.no-alerts {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.success-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.no-alerts p {
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+/* Lista de alertas */
+.alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+/* Item de alerta */
+.alert-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: #f9fafb;
+  border-radius: 8px;
+  border-left: 4px solid;
+  transition: all 0.3s;
+}
+
+.alert-item:hover {
+  background: #f3f4f6;
+  transform: translateX(5px);
+}
+
+.alert-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.alert-info {
+  flex: 1;
+}
+
+.alert-info h4 {
+  margin: 0 0 8px 0;
+  color: #111827;
+  font-size: 1rem;
+}
+
+.alert-metrics {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 8px;
+}
+
+.metric {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.metric strong {
+  color: #111827;
+}
+
+.alert-reason {
+  font-size: 0.875rem;
+  color: #ef4444;
+  margin: 0;
+  font-weight: 500;
+}
+
+.risk-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+/* Botón refrescar */
+.refresh-btn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.refresh-btn:hover {
+  background: #5a67d8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

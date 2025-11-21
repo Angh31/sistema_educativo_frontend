@@ -1,0 +1,168 @@
+/* ====================================
+   DASHBOARD DE PROFESOR
+   ==================================== */
+
+.courses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.course-item {
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.course-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.course-main-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.course-main-info h3 {
+  margin: 0 0 8px 0;
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+
+.course-description {
+  color: var(--text-secondary);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.course-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.stat-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 16px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.badge-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.badge-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Modal de detalles */
+.course-detail-body {
+  padding: 24px;
+}
+
+.detail-section {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.detail-section:last-child {
+  border-bottom: none;
+}
+
+.detail-section h3 {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.detail-section p {
+  margin: 8px 0;
+  color: var(--text-secondary);
+}
+
+.schedules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.schedule-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background: var(--light);
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.schedule-day {
+  font-weight: 600;
+  color: var(--primary);
+  min-width: 80px;
+}
+
+.schedule-time {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.schedule-room {
+  margin-left: auto;
+  background: var(--primary);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+  .course-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .course-stats {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .detail-actions {
+    flex-direction: column;
+  }
+
+  .detail-actions button {
+    width: 100%;
+  }
+}

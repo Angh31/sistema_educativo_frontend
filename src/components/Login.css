@@ -1,0 +1,135 @@
+/* ====================================
+   ESTILOS DEL LOGIN
+   ==================================== */
+
+/* Wrapper principal - centra el card */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Card del login */
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+/* Header del login */
+.login-header {
+  text-align: center;
+  padding: 2rem 2rem 1rem;
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--primary-hover) 100%
+  );
+  color: white;
+}
+
+.login-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.login-title {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.login-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+}
+
+/* Formulario */
+.login-form {
+  padding: 2rem;
+}
+
+/* Input deshabilitado */
+.form-input:disabled {
+  background: var(--light);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Footer */
+.login-footer {
+  padding: 1.5rem 2rem;
+  background: var(--light);
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .login-wrapper {
+    padding: 1rem;
+  }
+
+  .login-card {
+    max-width: 100%;
+  }
+
+  .login-form {
+    padding: 1.5rem;
+  }
+}
+/* ====================================
+   ESTILOS ADICIONALES PARA REGISTRO
+   ==================================== */
+
+/* Botón tipo link */
+.link-button {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.link-button:hover:not(:disabled) {
+  color: var(--primary-hover);
+  transform: none;
+  box-shadow: none;
+}
+
+.link-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Alert de éxito */
+.alert-success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+}
+
+/* Hint de ayuda en formularios */
+.form-hint {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Campos inválidos */
+input:invalid:not(:placeholder-shown) {
+  border-color: var(--danger);
+}
+
+input:valid:not(:placeholder-shown) {
+  border-color: var(--secondary);
+}

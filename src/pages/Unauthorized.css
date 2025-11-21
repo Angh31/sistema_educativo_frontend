@@ -1,0 +1,50 @@
+/* ====================================
+   ESTILOS PÁGINA NO AUTORIZADO
+   ==================================== */
+
+.unauthorized-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.unauthorized-card {
+  background: white;
+  border-radius: 16px;
+  padding: 3rem;
+  text-align: center;
+  max-width: 500px;
+  box-shadow: var(--shadow-lg);
+  animation: fadeInUp 0.5s ease;
+}
+
+.unauthorized-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+
+.unauthorized-card h1 {
+  color: var(--danger);
+  margin-bottom: 1rem;
+}
+
+.unauthorized-message {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.unauthorized-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .unauthorized-actions {
+    flex-direction: column;
+  }
+}

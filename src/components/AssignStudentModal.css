@@ -1,0 +1,155 @@
+/* ====================================
+   ESTILOS DEL MODAL DE ASIGNACIÓN
+   ==================================== */
+
+.assign-modal {
+  max-width: 600px;
+  max-height: 80vh;
+}
+
+.assign-modal-body {
+  padding: 20px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+/* Buscador */
+.search-box {
+  margin-bottom: 16px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* Contador */
+.selected-count {
+  padding: 12px;
+  background: var(--light);
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+
+/* Lista de estudiantes */
+.students-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.student-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.student-check-item:hover {
+  background: var(--light);
+  border-color: var(--primary);
+}
+
+.student-check-item.selected {
+  background: rgba(79, 70, 229, 0.1);
+  border-color: var(--primary);
+}
+
+.student-check-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.student-check-info {
+  flex: 1;
+}
+
+.student-check-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+}
+
+.student-check-email {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.student-check-warning {
+  font-size: 0.85rem;
+  color: var(--warning);
+  margin: 4px 0 0 0;
+}
+
+/* Footer del modal */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px;
+  border-top: 1px solid var(--border);
+}
+
+/* Loading state */
+.loading-state {
+  padding: 40px;
+  text-align: center;
+}
+
+.loading-state .spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--light);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .assign-modal {
+    max-width: 100%;
+    margin: 10px;
+  }
+
+  .assign-modal-body {
+    max-height: 60vh;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+  }
+
+  .modal-footer button {
+    width: 100%;
+  }
+}

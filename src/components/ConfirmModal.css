@@ -1,0 +1,224 @@
+/* ====================================
+   ESTILOS DEL MODAL DE CONFIRMACIÓN
+   ==================================== */
+
+/* ===== OVERLAY (FONDO OSCURO) ===== */
+.confirm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease-out;
+  backdrop-filter: blur(4px);
+}
+
+/* Animación de entrada del overlay */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===== CONTENIDO DEL MODAL ===== */
+.confirm-modal-content {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  animation: slideUp 0.3s ease-out;
+  position: relative;
+}
+
+/* Animación de entrada del contenido */
+@keyframes slideUp {
+  from {
+    transform: translateY(30px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===== ICONO ===== */
+.confirm-modal-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  animation: bounceIn 0.5s ease-out;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ===== TÍTULO ===== */
+.confirm-modal-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 12px 0;
+}
+
+/* ===== MENSAJE ===== */
+.confirm-modal-message {
+  font-size: 1rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+}
+
+/* ===== BOTONES ===== */
+.confirm-modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.confirm-modal-btn {
+  flex: 1;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.confirm-modal-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.confirm-modal-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.confirm-modal-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Botón Cancelar */
+.confirm-modal-cancel {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.confirm-modal-cancel:hover:not(:disabled) {
+  background: #d1d5db;
+}
+
+/* Botón Confirmar */
+.confirm-modal-confirm {
+  color: white;
+}
+
+.confirm-modal-confirm:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+/* ===== SPINNER PEQUEÑO ===== */
+.spinner-small {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== HINT DE TECLAS ===== */
+.confirm-modal-hint {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.confirm-modal-hint kbd {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .confirm-modal-content {
+    padding: 24px;
+    max-width: 90%;
+  }
+
+  .confirm-modal-title {
+    font-size: 1.5rem;
+  }
+
+  .confirm-modal-message {
+    font-size: 0.95rem;
+  }
+
+  .confirm-modal-actions {
+    flex-direction: column;
+  }
+
+  .confirm-modal-btn {
+    width: 100%;
+  }
+}
+
+/* ===== ACCESIBILIDAD ===== */
+.confirm-modal-overlay:focus {
+  outline: none;
+}
+
+.confirm-modal-btn:focus-visible {
+  outline: 3px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 2px;
+}
+
+/* ===== TEXTO MUTED ===== */
+.text-muted {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}

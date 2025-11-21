@@ -1,0 +1,395 @@
+/* ====================================
+   ESTILOS DEL DASHBOARD PADRE
+   ==================================== */
+
+.parent-dashboard {
+  background: var(--light);
+}
+
+/* Resumen de hijos */
+.children-summary {
+  padding: 2rem;
+  background: white;
+  border-bottom: 2px solid var(--border);
+}
+
+.children-summary h2 {
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.children-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card de cada hijo */
+.child-card {
+  background: var(--light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+}
+
+.child-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.child-card.active {
+  border-color: var(--primary);
+  background: white;
+  box-shadow: var(--shadow-md);
+}
+
+.child-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.child-card-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.active-badge {
+  background: var(--primary);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.child-card-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.child-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 6px;
+}
+
+.child-card.active .child-stat {
+  background: var(--light);
+}
+
+.child-stat .stat-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.child-stat .stat-value {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.child-stat .stat-value.passing {
+  color: var(--secondary);
+}
+
+.child-stat .stat-value.failing {
+  color: var(--danger);
+}
+
+/* Stats rápidas del hijo */
+.child-quick-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: white;
+  border-bottom: 2px solid var(--border);
+}
+
+.student-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  border-radius: 12px;
+  color: white;
+  box-shadow: var(--shadow);
+}
+
+.student-stat-card .stat-icon {
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.student-stat-card .stat-info h3 {
+  color: white;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.student-stat-card .stat-info p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Detalles del hijo */
+.child-details {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.child-details h2 {
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.child-details h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+/* Detalle de cursos */
+.course-detail-card {
+  background: var(--light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.course-detail-card .course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.course-detail-card .course-header h3 {
+  color: var(--primary);
+  margin: 0;
+}
+
+.course-level {
+  background: var(--primary);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.course-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.info-row {
+  display: flex;
+  gap: 1rem;
+  align-items: start;
+}
+
+.info-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  min-width: 120px;
+}
+
+.schedules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.schedule-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: white;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+/* Resumen de calificaciones */
+.grade-summary {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.average-card {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  border-radius: 16px;
+  color: white;
+  box-shadow: var(--shadow-lg);
+}
+
+.average-card h3 {
+  margin: 0 0 1rem 0;
+  color: white;
+}
+
+.average-value {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.grades-table {
+  margin-top: 2rem;
+  overflow-x: auto;
+}
+
+.grade-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.grade-badge.passing {
+  background: var(--secondary);
+  color: white;
+}
+
+.grade-badge.failing {
+  background: var(--danger);
+  color: white;
+}
+
+/* Resumen de asistencia */
+.attendance-summary {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.attendance-stat {
+  text-align: center;
+  padding: 2rem;
+  background: var(--light);
+  border-radius: 16px;
+}
+
+.attendance-percentage {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--primary);
+  display: block;
+}
+
+/* Lista de asistencia */
+.attendance-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.attendance-record {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--light);
+  border-radius: 8px;
+  align-items: center;
+}
+
+.record-date {
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.record-course {
+  color: var(--text-primary);
+}
+
+.record-status {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.record-status.status-present {
+  background: var(--secondary);
+  color: white;
+}
+
+.record-status.status-absent {
+  background: var(--danger);
+  color: white;
+}
+
+.record-status.status-late {
+  background: var(--warning);
+  color: white;
+}
+
+.record-status.status-excused {
+  background: var(--info);
+  color: white;
+}
+
+.record-method {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Utilidades */
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .children-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .child-quick-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .child-details {
+    padding: 1rem;
+  }
+
+  .attendance-record {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .info-row {
+    flex-direction: column;
+  }
+
+  .info-label {
+    min-width: auto;
+  }
+}
