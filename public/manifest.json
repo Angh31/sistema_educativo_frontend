@@ -1,24 +1,18 @@
 {
-  "name": "Sistema Académico Digital",
-  "short_name": "Academia",
-  "description": "Sistema de gestión académica con asistencia y calificaciones",
+  "name": "Sistema Educativo",
+  "short_name": "EduSystem",
+  "description": "Sistema de gestión académica con asistencia, calificaciones y monitoreo IA",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#667eea",
-  "theme_color": "#4f46e5",
+  "background_color": "#0a1628",
+  "theme_color": "#00d4ff",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icon-512x512.png",
+      "src": "/API.jpeg",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/jpeg",
+      "purpose": "any"
     }
   ]
 }
