@@ -1,12 +1,12 @@
 // ====================================
-// DASHBOARD DE ADMINISTRADOR
+// DASHBOARD DE ADMINISTRADOR - COMPLETO
 // ====================================
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { useToast } from "../context/ToastContext"; // ✅ AGREGAR
-import { useConfirm } from "../context/ConfirmContext"; // ✅ NUEVO
+import { useToast } from "../context/ToastContext";
+import { useConfirm } from "../context/ConfirmContext";
 import { getAdminDashboard } from "../api/dashboardApi";
 import { getStudents } from "../api/studentApi";
 import { getCourses } from "../api/courseApi";
@@ -21,13 +21,15 @@ import ParentForm from "../components/ParentForm";
 import AssignStudentModal from "../components/AssignStudentModal";
 import WeeklyScheduleView from "../components/WeeklyScheduleView";
 import AIAlertsPanel from "../components/AIAlertsPanel";
+import StudentAnalysisModal from "../components/StudentAnalysisModal";
+import ServerStatusCard from "../components/ServerStatusCard";
 
 const AdminDashboard = () => {
   // ===== HOOKS =====
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const { showToast } = useToast(); // ✅ AGREGAR
-  const { confirm } = useConfirm(); // ✅ NUEVO
+  const { showToast } = useToast();
+  const { confirm } = useConfirm();
 
   // ===== ESTADOS =====
   const [dashboard, setDashboard] = useState(null);
@@ -40,6 +42,11 @@ const AdminDashboard = () => {
 
   const [loadingStudents, setLoadingStudents] = useState(false);
   const [loadingCourses, setLoadingCourses] = useState(false);
+
+  // ✅ Estados para modal de análisis IA
+  const [showAnalysisModal, setShowAnalysisModal] = useState(false);
+  const [selectedStudentForAnalysis, setSelectedStudentForAnalysis] =
+    useState(null);
 
   // Paginación estudiantes
   const [studentsPage, setStudentsPage] = useState(1);
@@ -180,7 +187,15 @@ const AdminDashboard = () => {
     setParentsPage(1);
   };
 
-  // ✅ MODIFICADO: handleDeleteStudent con modal
+  // ✅ NUEVO: Handler para analizar estudiante con IA
+  const handleAnalyzeStudent = (student) => {
+    setSelectedStudentForAnalysis({
+      id: student.student_id || student.id,
+      name: student.name,
+    });
+    setShowAnalysisModal(true);
+  };
+
   const handleDeleteStudent = async (student) => {
     const confirmed = await confirm({
       title: "🗑️ Eliminar Estudiante",
@@ -212,7 +227,6 @@ const AdminDashboard = () => {
     }
   };
 
-  // ✅ MODIFICADO: handleDeleteTeacher con modal
   const handleDeleteTeacher = async (teacher) => {
     const confirmed = await confirm({
       title: "🗑️ Eliminar Profesor",
@@ -244,7 +258,6 @@ const AdminDashboard = () => {
     }
   };
 
-  // ✅ MODIFICADO: handleDeleteCourse con modal
   const handleDeleteCourse = async (course) => {
     const confirmed = await confirm({
       title: "🗑️ Eliminar Curso",
@@ -276,7 +289,6 @@ const AdminDashboard = () => {
     }
   };
 
-  // ✅ MODIFICADO: handleDeleteParent con modal
   const handleDeleteParent = async (parent) => {
     const confirmed = await confirm({
       title: "🗑️ Eliminar Padre",
@@ -313,7 +325,6 @@ const AdminDashboard = () => {
     setShowAssignModal(true);
   };
 
-  // ✅ MODIFICADO: handleLogout con modal
   const handleLogout = async () => {
     const confirmed = await confirm({
       title: "🚪 Cerrar Sesión",
@@ -372,8 +383,11 @@ const AdminDashboard = () => {
         </div>
       </header>
 
-      {/* ✅ NUEVO: Panel de Alertas IA */}
-      <AIAlertsPanel />
+      {/* ✅ Panel de Alertas IA con callback para analizar */}
+      <AIAlertsPanel onAnalyze={handleAnalyzeStudent} />
+
+      {/* Estado del Servidor */}
+      <ServerStatusCard />
 
       <div className="dashboard-tabs">
         <button
@@ -565,6 +579,14 @@ const AdminDashboard = () => {
                             <td>{student.phone || "N/A"}</td>
                             <td>
                               <div className="action-buttons">
+                                {/* ✅ NUEVO: Botón de análisis IA */}
+                                <button
+                                  className="btn-sm btn-info"
+                                  onClick={() => handleAnalyzeStudent(student)}
+                                  title="Analizar con IA"
+                                >
+                                  🤖 Analizar
+                                </button>
                                 <button
                                   className="btn-sm btn-primary"
                                   onClick={() => {
@@ -868,6 +890,8 @@ const AdminDashboard = () => {
         )}
       </div>
 
+      {/* ===== MODALES ===== */}
+
       {showStudentForm && (
         <StudentForm
           student={editingStudent}
@@ -939,6 +963,18 @@ const AdminDashboard = () => {
           onClose={() => {
             setShowAssignModal(false);
             setAssigningParent(null);
+          }}
+        />
+      )}
+
+      {/* ✅ NUEVO: Modal de Análisis IA */}
+      {showAnalysisModal && selectedStudentForAnalysis && (
+        <StudentAnalysisModal
+          studentId={selectedStudentForAnalysis.id}
+          studentName={selectedStudentForAnalysis.name}
+          onClose={() => {
+            setShowAnalysisModal(false);
+            setSelectedStudentForAnalysis(null);
           }}
         />
       )}

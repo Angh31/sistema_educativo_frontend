@@ -1,5 +1,5 @@
 // ====================================
-// PANEL DE ALERTAS DE IA - CORREGIDO
+// PANEL DE ALERTAS DE IA - CON BOTÓN ANALIZAR
 // ====================================
 // Muestra estudiantes en riesgo detectados por IA
 
@@ -8,17 +8,17 @@ import { getAIAlerts } from "../api/aiApi";
 import { useToast } from "../context/ToastContext";
 import "./AIAlertsPanel.css";
 
-// ✅ CORREGIDO: Acepta endpoint y title como props
 const AIAlertsPanel = ({
   endpoint = "/alerts",
   title = "🤖 Alertas de IA",
+  onAnalyze = null, // ✅ NUEVO: Callback para analizar estudiante
 }) => {
   const { showToast } = useToast();
 
   // Estados
   const [alerts, setAlerts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [expanded, setExpanded] = useState(true); // Panel expandido/colapsado
+  const [expanded, setExpanded] = useState(true);
 
   // Cargar alertas al montar o cuando cambie el endpoint
   useEffect(() => {
@@ -33,7 +33,6 @@ const AIAlertsPanel = ({
       setLoading(true);
       console.log("🔍 Consultando endpoint:", endpoint);
 
-      // ✅ CORREGIDO: Pasa el endpoint como parámetro
       const data = await getAIAlerts(endpoint);
 
       console.log("✅ Alertas recibidas:", data);
@@ -52,13 +51,13 @@ const AIAlertsPanel = ({
   const getRiskColor = (level) => {
     switch (level) {
       case "HIGH":
-        return "#ef4444"; // Rojo
+        return "#ef4444";
       case "MEDIUM":
-        return "#f59e0b"; // Amarillo
+        return "#f59e0b";
       case "LOW":
-        return "#10b981"; // Verde
+        return "#10b981";
       default:
-        return "#6b7280"; // Gris
+        return "#6b7280";
     }
   };
 
@@ -108,13 +107,11 @@ const AIAlertsPanel = ({
       {expanded && (
         <div className="panel-content">
           {alerts.length === 0 ? (
-            // Sin alertas
             <div className="no-alerts">
               <div className="success-icon">✅</div>
               <p>¡Excelente! No hay estudiantes en riesgo</p>
             </div>
           ) : (
-            // Lista de alertas
             <div className="alerts-list">
               {alerts.map((alert) => (
                 <div
@@ -144,12 +141,31 @@ const AIAlertsPanel = ({
                     )}
                   </div>
 
-                  {/* Badge de nivel */}
-                  <div
-                    className="risk-badge"
-                    style={{ backgroundColor: getRiskColor(alert.risk_level) }}
-                  >
-                    {alert.risk_level}
+                  {/* Acciones */}
+                  <div className="alert-actions">
+                    {/* Badge de nivel */}
+                    <div
+                      className="risk-badge"
+                      style={{
+                        backgroundColor: getRiskColor(alert.risk_level),
+                      }}
+                    >
+                      {alert.risk_level}
+                    </div>
+
+                    {/* ✅ NUEVO: Botón de análisis */}
+                    {onAnalyze && (
+                      <button
+                        className="btn-analyze"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onAnalyze(alert);
+                        }}
+                        title="Analizar con IA"
+                      >
+                        🔍 Analizar
+                      </button>
+                    )}
                   </div>
                 </div>
               ))}

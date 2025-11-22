@@ -53,3 +53,9 @@ export const deleteParent = async (parentId) => {
   const res = await api.delete(`/parents/${parentId}`);
   return res.data;
 };
+
+// Obtener detalles de un hijo específico (para padres)
+export const getParentChildDetails = async (studentId) => {
+  const response = await api.get(`/parents/child/${studentId}`);
+  return response.data;
+};

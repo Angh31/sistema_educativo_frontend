@@ -12,6 +12,7 @@ import { getCourseById } from "../api/courseApi";
 import { bulkAttendance } from "../api/attendanceApi";
 import { bulkGrades } from "../api/gradeApi";
 import AIAlertsPanel from "../components/AIAlertsPanel";
+import StudentAnalysisModal from "../components/StudentAnalysisModal";
 import "./TeacherDashboard.css";
 
 const TeacherDashboard = () => {
@@ -19,7 +20,8 @@ const TeacherDashboard = () => {
   const navigate = useNavigate();
   const { showSuccess, showError } = useToast();
   const { confirm } = useConfirm(); // ✅ NUEVO
-
+  const [selectedStudentForAnalysis, setSelectedStudentForAnalysis] =
+    useState(null);
   const [dashboard, setDashboard] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -254,8 +256,9 @@ const TeacherDashboard = () => {
       </header>
       <div className="dashboard-section">
         <AIAlertsPanel
-          endpoint="/alerts/my-children"
-          title="⚠️ Alertas de mis Hijos"
+          endpoint="/alerts/my-students"
+          title="⚠️ Alertas de mis Estudiantes"
+          onAnalyze={(alert) => setSelectedStudentForAnalysis(alert)}
         />
       </div>
       <div className="quick-stats">
@@ -579,6 +582,14 @@ const TeacherDashboard = () => {
           </div>
         )}
       </div>
+      {/* Modal de Análisis IA */}
+      {selectedStudentForAnalysis && (
+        <StudentAnalysisModal
+          studentId={selectedStudentForAnalysis.student_id}
+          studentName={selectedStudentForAnalysis.name}
+          onClose={() => setSelectedStudentForAnalysis(null)}
+        />
+      )}
     </div>
   );
 };

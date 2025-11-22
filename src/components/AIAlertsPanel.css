@@ -1,195 +1,253 @@
 /* ====================================
-   ESTILOS PANEL DE ALERTAS IA
+   ESTILOS DE PANEL DE ALERTAS IA - ACTUALIZADO
    ==================================== */
 
 .ai-alerts-panel {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: white;
   border-radius: 12px;
-  padding: 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
 }
 
-/* Header del panel */
+/* Header */
 .panel-header {
-  padding: 20px;
-  cursor: pointer;
-  user-select: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  cursor: pointer;
+  user-select: none;
 }
 
 .panel-title {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .panel-title h3 {
-  color: white;
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .alerts-count {
-  background: rgba(255, 255, 255, 0.3);
-  color: white;
+  background: rgba(255, 255, 255, 0.2);
   padding: 4px 12px;
   border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: bold;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .toggle-btn {
-  background: rgba(255, 255, 255, 0.2);
+  background: transparent;
   border: none;
   color: white;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
   font-size: 1rem;
-}
-
-.toggle-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-/* Contenido */
-.panel-content {
-  background: white;
-  border-radius: 0 0 12px 12px;
-  padding: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
 }
 
 /* Loading */
 .panel-loading {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 40px;
-  color: white;
+  gap: 12px;
 }
 
 .panel-loading .spinner {
   width: 40px;
   height: 40px;
-  border: 4px solid rgba(255, 255, 255, 0.3);
-  border-top-color: white;
+  border: 3px solid #e5e7eb;
+  border-top-color: #667eea;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin: 0 auto 15px;
-}
-
-/* Sin alertas */
-.no-alerts {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.success-icon {
-  font-size: 3rem;
-  margin-bottom: 15px;
-}
-
-.no-alerts p {
-  color: #6b7280;
-  font-size: 1rem;
-}
-
-/* Lista de alertas */
-.alerts-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-height: 500px;
-  overflow-y: auto;
-}
-
-/* Item de alerta */
-.alert-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 15px;
-  background: #f9fafb;
-  border-radius: 8px;
-  border-left: 4px solid;
-  transition: all 0.3s;
-}
-
-.alert-item:hover {
-  background: #f3f4f6;
-  transform: translateX(5px);
-}
-
-.alert-icon {
-  font-size: 2rem;
-  flex-shrink: 0;
-}
-
-.alert-info {
-  flex: 1;
-}
-
-.alert-info h4 {
-  margin: 0 0 8px 0;
-  color: #111827;
-  font-size: 1rem;
-}
-
-.alert-metrics {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 8px;
-}
-
-.metric {
-  font-size: 0.875rem;
-  color: #6b7280;
-}
-
-.metric strong {
-  color: #111827;
-}
-
-.alert-reason {
-  font-size: 0.875rem;
-  color: #ef4444;
-  margin: 0;
-  font-weight: 500;
-}
-
-.risk-badge {
-  padding: 6px 12px;
-  border-radius: 20px;
-  color: white;
-  font-weight: bold;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  flex-shrink: 0;
-}
-
-/* Botón refrescar */
-.refresh-btn {
-  width: 100%;
-  margin-top: 15px;
-  padding: 12px;
-  background: #667eea;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.refresh-btn:hover {
-  background: #5a67d8;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
 }
 
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+.panel-loading p {
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Content */
+.panel-content {
+  padding: 20px;
+}
+
+/* No alerts */
+.no-alerts {
+  text-align: center;
+  padding: 30px;
+}
+
+.success-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.no-alerts p {
+  color: #10b981;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Alerts list */
+.alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+/* Alert item */
+.alert-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+  border-left: 4px solid;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.alert-item:hover {
+  background: #f3f4f6;
+  transform: translateX(2px);
+}
+
+/* Alert icon */
+.alert-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* Alert info */
+.alert-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.alert-info h4 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  color: #1f2937;
+}
+
+.alert-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
+.metric {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.metric strong {
+  color: #374151;
+}
+
+.alert-reason {
+  margin: 8px 0 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* ✅ NUEVO: Alert actions */
+.alert-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Risk badge */
+.risk-badge {
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* ✅ NUEVO: Botón analizar */
+.btn-analyze {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.btn-analyze:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Refresh button */
+.refresh-btn {
+  width: 100%;
+  padding: 12px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  color: #374151;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.refresh-btn:hover {
+  background: #e5e7eb;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .alert-item {
+    flex-wrap: wrap;
+  }
+
+  .alert-info {
+    width: 100%;
+    order: 2;
+    margin-top: 8px;
+  }
+
+  .alert-icon {
+    order: 1;
+  }
+
+  .alert-actions {
+    order: 1;
+    flex-direction: row;
+    width: auto;
+    margin-left: auto;
+  }
+
+  .alert-metrics {
+    flex-direction: column;
+    gap: 4px;
   }
 }

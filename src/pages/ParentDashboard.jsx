@@ -7,18 +7,24 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useToast } from "../context/ToastContext";
-import { getParentById, getChildrenSummary } from "../api/parentApi";
 import { getStudentDashboard } from "../api/dashboardApi";
 import { useConfirm } from "../context/ConfirmContext";
 import AIAlertsPanel from "../components/AIAlertsPanel";
+import {
+  getParentById,
+  getChildrenSummary,
+  getParentChildDetails,
+} from "../api/parentApi";
 import "./ParentDashboard.css";
+import StudentAnalysisModal from "../components/StudentAnalysisModal";
 
 const ParentDashboard = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const { showToast } = useToast();
   const { confirm } = useConfirm();
-
+  const [selectedStudentForAnalysis, setSelectedStudentForAnalysis] =
+    useState(null);
   // ===== ESTADOS =====
   const [parent, setParent] = useState(null);
   const [childrenSummary, setChildrenSummary] = useState([]);
@@ -70,11 +76,10 @@ const ParentDashboard = () => {
    */
   const loadChildDetails = async () => {
     try {
-      const details = await getStudentDashboard(selectedChild.student_id);
+      const details = await getParentChildDetails(selectedChild.student_id);
       setChildDetails(details);
     } catch (error) {
       console.error("Error cargando detalles del hijo:", error);
-      showToast("Error al cargar detalles", "error");
     }
   };
 
@@ -153,6 +158,7 @@ const ParentDashboard = () => {
       <AIAlertsPanel
         endpoint="/alerts/my-children"
         title="⚠️ Alertas de mis Hijos"
+        onAnalyze={(alert) => setSelectedStudentForAnalysis(alert)}
       />
       {/* Resumen de hijos */}
       <div className="children-summary">
@@ -411,6 +417,14 @@ const ParentDashboard = () => {
             )}
           </div>
         </>
+      )}
+      {/* Modal de Análisis IA */}
+      {selectedStudentForAnalysis && (
+        <StudentAnalysisModal
+          studentId={selectedStudentForAnalysis.student_id}
+          studentName={selectedStudentForAnalysis.name}
+          onClose={() => setSelectedStudentForAnalysis(null)}
+        />
       )}
     </div>
   );
