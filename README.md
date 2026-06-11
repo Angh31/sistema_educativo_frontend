@@ -1,16 +1,82 @@
-# React + Vite
+# 🎓 Sistema Educativo — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dashboard web para gestión académica — interfaz por rol con control de asistencia, calificaciones y alertas de riesgo estudiantil.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ¿Qué es?
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Interfaz web del sistema de gestión académica. Cada rol tiene su propio dashboard con acceso filtrado — el administrador ve todo, el docente gestiona su curso, el estudiante consulta su progreso y el tutor hace seguimiento.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Stack Técnico
+
+| Capa | Tecnología |
+|---|---|
+| Framework | React 18 |
+| Build tool | Vite 5 |
+| Routing | React Router v6 |
+| HTTP Client | Axios |
+| Autenticación | JWT (Context API) |
+
+---
+
+## Vistas por rol
+
+| Rol | Vistas disponibles |
+|---|---|
+| Administrador | Dashboard, Usuarios, Cursos, Reportes, Alertas |
+| Docente | Mi curso, Asistencia, Calificaciones, Alertas |
+| Estudiante | Mi perfil, Mis notas, Mi asistencia, Horario |
+| Padre/Tutor | Seguimiento del estudiante asignado |
+
+---
+
+## Instalación
+
+```bash
+git clone https://github.com/Angh31/sistema_educativo_frontend.git
+cd sistema_educativo_frontend
+
+npm install
+
+# Configurar URL del backend
+cp .env.example .env
+
+npm run dev
+```
+
+Acceder en: `http://localhost:5173`
+
+---
+
+## Variables de entorno
+
+```env
+VITE_API_URL=http://localhost:3000
+```
+
+---
+
+## Estructura
+
+```
+sistema_educativo_frontend/
+├── src/
+│   ├── context/         # AuthContext (sesión JWT)
+│   ├── services/        # api.js (Axios)
+│   ├── components/      # Componentes reutilizables
+│   ├── pages/           # Vistas por rol
+│   └── App.jsx
+├── .env.example
+└── package.json
+```
+
+---
+
+> API REST disponible en [sistema_educativo_backend](https://github.com/Angh31/sistema_educativo_backend)
