@@ -2,6 +2,8 @@
 
 Dashboard web para gestión académica — interfaz por rol con control de asistencia, calificaciones y alertas de riesgo estudiantil.
 
+🔗 **Demo en vivo:** [sistema-educativo-frontend-anghels-projects-79904a97.vercel.app](https://sistema-educativo-frontend-anghels-projects-79904a97.vercel.app)
+
 ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
